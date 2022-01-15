@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        /////////////////array/////////////
+        /////largest number in list
+        let arr = [1, 2, 3, 4, 56, 78, 100, 9000]
+        let longest = 0;
+        for (let i = 0; i < arr.length; i++) {
+            if (arr[i] > longest) {
+                longest = arr[i]
+            }
+        }
+        console.log(longest)
+
+        /////// reverse the word////
+
+        function reverse_word(str) {
+            return str.split("").reverse().join('')
+        }
+        console.log(reverse_word("Digikull"))
+
+        ///////return no. pattern///
+
+        let n = 5;
+        let string = '';
+        for (let i = 1; i <= n; i++){
+            for ( let j = 1 ; j <= n - i +1 ; j++){
+                string += j
+            }
+            string += '\n'
+        }
+        console.log(string);
+
+        ////// sum of the number////
+        const sum = [1, 45, 67, 80, 200];
+        let result = 0;
+        for (let i = 0; i < sum.length; i++) {
+            result += sum[1];
+        }
+        console.log(result)
+
+
+
+//////////////////////////////////////////
+///////////////////////////////////////
+/////////////stack///////////////
+/////////qs.1 -- add and pop 1 to 10 number ////
+        class Stack {
+            constructor() {
+                this.items = [0]
+            }
+            add(e) {
+                this.items.push(e)
+            }
+            remove(e) {
+                if (this.items.length > 0) {
+                    return this.items.pop(e)
+                }
+            }
+        }
+        let stack1 = new Stack()
+        stack1.add(1);
+        stack1.add(2);
+        stack1.add(3);
+        stack1.add(4);
+        stack1.add(5);
+        stack1.add(6);
+        stack1.add(7);
+        stack1.add(8);
+        stack1.add(9);
+        stack1.add(10);
+        console.log(stack1.items)
+        stack1.remove();
+        console.log(stack1.items)
+
+
+
+
+        //////linkedlist
+
+
+        class Node {
+            constructor(data, next) {
+                this.data = data;
+                this.next = next;
+            }
+        }
+
+        class LinkedList {
+            constructor() {
+                this.head = null;
+                this.size = 0;
+
+            }
+
+            //insert 1st node
+            insertFirst(data) {
+                this.head = new Node(data, this.head);
+                this.size++;
+            }
+
+            //insert at last
+            insertLast(data) {
+                let node = new Node(data);
+                let current;
+
+                if (!this.head) {
+                    this.head = node
+                } else {
+                    current = this.head;
+
+                    while (current.next) {
+                        current = current.next;
+                    }
+                    current.next = node;
+                }
+                this.size++;
+
+            }
+
+            //insert at index
+            insertAt(data, index) {
+                if (index > 0 && index > this.size) {
+                    return;
+                }
+
+                if (index === 0) {
+                    this.head = new Node(data, this.head);
+                    return;
+                }
+
+                const node = new Node(data);
+                let current, previous;
+
+                current = this.head;
+
+                let count = 0;
+
+                while (count < index) {
+                    previous = current;
+                    count++
+                    current = current.next;
+                }
+
+                node.next = current;
+                previous.next = node;
+                this.size++
+            }
+
+            //get at the index
+            getAt(index) {
+                let current = this.head;
+                let count = 0;
+
+                while (current) {
+                    if (count == index) {
+                        console.log(current.data)
+                    }
+
+                    count++;
+                    current = current.next;
+                }
+                return null
+            }
+
+            // remove at index// 
+            removeAt(index) {
+                if (index > 0 && index > this.size) {
+                    return;
+                }
+                let current = this.head;
+                let previous;
+                let count = 0;
+
+                if (index === 0) {
+                    this.head = current.next
+                } else {
+                    while (count < index) {
+                        count++;
+                        previous = current;
+                        current = current.next;
+
+                    }
+                    previous.next = current.next;
+                }
+                this.size--
+            }
+
+            //print the list
+            printListData() {
+                let current = this.head;
+
+                while (current) {
+                    console.log(current.data);
+                    current = current.next;
+                }
+            }
+
+        }
+        const ll = new LinkedList();
+
+        ll.insertFirst(10)
+        ll.insertFirst(20)
+        ll.insertFirst(30)
+        ll.insertLast(40)
+        ll.removeAt(2)
+        /* ll.insertAt(50,2) */
+
+        ll.printListData()
+
+        /* ll.getAt(4) */
+        ll.removeAt(2)
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>
